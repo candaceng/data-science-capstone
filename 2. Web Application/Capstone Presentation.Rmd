@@ -1,0 +1,47 @@
+---
+title: "Data Science Capstone: Text Prediction"
+author: "Candace Ng"
+date: "19/08/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, fig.width=8, fig.height=3)
+```
+
+## Background
+
+The goal of this project is to build an N-gram model to predict the next word in an incomplete sentence based on 3 text files that contained collections of:
+
+- Blogs
+- News Articles
+- Tweets
+
+Click [here](https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip) to download the 3 datasets above.
+
+## Cleaning the Data
+
+Before constructing the model, the text corpus needed to be cleaned. Punctuation, stop words, and unnecessary whitespace were removed. Then everything was converted to lowercase. We can now analyze what single words appear most frequently in our text corpus before diving into N-grams. The word cloud below illustrates this. 
+
+```{r echo=FALSE}
+library(png)
+library(grid)
+grid.raster(readPNG("wordcloud.png"))
+```
+
+## Exploratory Analysis Using N-grams
+
+This [detailed article](https://rpubs.com/candaceng/exploratory-analysis) outlines the process of exploring the data after cleaning it. The focus was on analyzing the most frequently occurring unigrams, bigrams, and trigrams from the datasets. Various bar charts were constructed for better visualization of this process.
+
+```{r echo=FALSE}
+library(png)
+library(grid)
+grid.raster(readPNG("ngram-barcharts.png"))
+```
+
+## Web Application
+
+```{r pressure}
+plot(pressure)
+```
+
