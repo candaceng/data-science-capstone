@@ -11,10 +11,10 @@ ui <- fluidPage(theme=shinythemes::shinytheme("lumen"),
                 
     titlePanel(strong("Text Prediction Using N-gram Models")),
     h5("Candace Ng"),
-    h5("August 19, 2020"),
     
     br(), hr(),
-    h4(strong("Predictor")),
+    h3(strong("Predictor")),
+    h5("This model predicts the next word in a sentence based on the most frequently occuring N-grams in a large text corpus of blogs, news articles, and tweets (see below for statistics)"),
     fluidRow(
         column(6, align="center",
            textInput("text", h5("Enter Text:"), value=""),
@@ -28,7 +28,7 @@ ui <- fluidPage(theme=shinythemes::shinytheme("lumen"),
     ),
     
     br(), hr(), 
-    h4(strong("Statistics")),
+    h3(strong("Statistics")),
     h5("Toggle between the tabs to view the most frequently occuring unigrams, bigrams, and trigrams from the text corpus"),
     mainPanel(width="80%", align="center",
         tabsetPanel(
