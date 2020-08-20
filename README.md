@@ -13,3 +13,7 @@ This course will start with the basics, analyzing a large corpus of text documen
 ### 1. Exploratory Analysis
 
 3 text files containing collections of blogs, news, and tweets were read in and cleaned to create a corpus of text, which was used to construct N-gram models. The focus was on the frequency of words, unigrams, bigrams, and trigrams. A detailed walkthrough of this process can be found [here](https://rpubs.com/candaceng/exploratory-analysis)
+
+### 2. Web Application
+
+A [web application](https://candaceng.shinyapps.io/Text_Prediction_Using_N-grams/) was built using Shiny. The user interface presents a predictive model that makes the best guess of what the next word of an incomplete sentence will be. Users can also toggle between bar charts of the most frequently occurring N-grams. We currently support unigrams, bigrams, and trigrams. 
