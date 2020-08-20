@@ -1,6 +1,7 @@
 library(shiny)
 library(shinythemes)
 library(ggplot2)
+library(stringr)
 
 # Define UI for application 
 ui <- fluidPage(theme=shinythemes::shinytheme("lumen"),
@@ -9,23 +10,24 @@ ui <- fluidPage(theme=shinythemes::shinytheme("lumen"),
     h5("Candace Ng"),
     h5("August 19, 2020"),
     
-    hr(),
+    br(), hr(),
     h4(strong("Predictor")),
-    h5("Submit a partial sentence below and the next word will be predicted."),
-    sidebarLayout(
-        sidebarPanel(
-            textInput("text", h6("Enter Text:"), value=""),
-            submitButton("Submit")
+    fluidRow(
+        column(6, align="center",
+           textInput("text", h5("Enter Text:"), value=""),
+           helpText("See the prediction of the next word on the right")
         ),
-        mainPanel(align="center",
-            h5("The next word is...")
+        column(1),
+        column(4, align="center",
+           h5("The next word is predicted to be:"),
+           verbatimTextOutput("prediction"),
         )
     ),
     
-    hr(),
+    br(), hr(), 
     h4(strong("Statistics")),
     h5("Toggle between the tabs to view the most frequently occuring unigrams, bigrams, and trigrams from the text corpus"),
-    mainPanel(width="90%", align="center",
+    mainPanel(width="80%", align="center",
         tabsetPanel(
             tabPanel(strong("Unigram"), plotOutput("unigram")),
             tabPanel(strong("Bigram"),  plotOutput("bigram")),
@@ -39,6 +41,24 @@ server <- function(input, output) {
     unigram <- readRDS("unigram.rds")
     bigram <- readRDS("bigram.rds")
     trigram <- readRDS("trigram.rds")
+    
+    clean_input <- function(x) {
+        xclean <- removeNumbers(removePunctuation(tolower(x)))
+        return(strsplit(xclean, " ")[[1]])
+    }
+    query <- reactive({clean_input(input$text)})
+    
+    
+    output$prediction <- renderText({
+        if(length(query()) == 0) { " " }
+        else if(length(query()) >= 2 & !(identical(integer(0), which(startsWith(trigram$word, query()))))) { 
+            tail(strsplit(trigram$word[which(startsWith(trigram$word, query()))], " ")[[1]], 1)
+        }
+        else if(length(query()) == 1 & !(identical(integer(0), which(startsWith(bigram$word, query()))))) {
+            tail(strsplit(bigram$word[which(startsWith(bigram$word, query()))], " ")[[1]], 1)
+        }
+        else{ sample(c("and", "is", "the"), 1) }
+    })
     
     output$unigram <- renderPlot({
         g1 <- ggplot(unigram[1:20,], aes(x = reorder(word, -freq), y = freq))
