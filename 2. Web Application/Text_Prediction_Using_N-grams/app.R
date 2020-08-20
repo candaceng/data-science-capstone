@@ -45,22 +45,17 @@ server <- function(input, output) {
     bigram <- readRDS("bigram.rds")
     trigram <- readRDS("trigram.rds")
     
-    clean_input <- function(x) {
-        xclean <- removeNumbers(removePunctuation(tolower(x)))
-        return(strsplit(xclean, " ")[[1]])
-    }
-    query <- reactive({clean_input(input$text)})
-    
     
     output$prediction <- renderText({
-        if(length(query()) == 0) { " " }
-        else if(length(query()) >= 2 & !(identical(integer(0), which(startsWith(trigram$word, query()))))) { 
-            tail(strsplit(trigram$word[which(startsWith(trigram$word, query()))], " ")[[1]], 1)
+        query <- strsplit(removeNumbers(removePunctuation(tolower(input$text))), " ")[[1]]
+        if(length(query) == 0) { " " }
+        else if(!(identical(integer(0), which(startsWith(trigram$word, paste(tail(query, 2)[1], tail(query, 1))))))) { 
+            tail(strsplit(trigram$word[which(startsWith(trigram$word, paste(tail(query, 2)[1], tail(query, 1))))], " ")[[1]], 1)
         }
-        else if(length(query()) == 1 & !(identical(integer(0), which(startsWith(bigram$word, query()))))) {
-            tail(strsplit(bigram$word[which(startsWith(bigram$word, query()))], " ")[[1]], 1)
+        else if(!(identical(integer(0), which(startsWith(bigram$word, tail(query, 1)))))) {
+            tail(strsplit(bigram$word[which(startsWith(bigram$word, tail(query, 1)))], " ")[[1]], 1)
         }
-        else{ sample(c("and", "is", "the"), 1) }
+        else{ sample(c("and", "is", "the", unigram$word[1:50]), 1) }
     })
     
     output$unigram <- renderPlot({
