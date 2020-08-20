@@ -18,11 +18,11 @@ The project analyzes a large corpus of text documents to discover the structure 
 
 ### 1. Exploratory Analysis
 
-Three text files containing collections of blogs, news, and tweets were read in and cleaned to create a corpus of text, which was used to construct N-gram models. The focus was on the frequency of words, unigrams, bigrams, and trigrams. A [word cloud](https://github.com/candaceng/data-science-capstone/blob/master/2.%20Web%20Application/wordcloud.png) and several [bar charts](https://github.com/candaceng/data-science-capstone/blob/master/2.%20Web%20Application/ngram-barcharts.png) were constructed in R for visual aid. A detailed walkthrough of the data cleaning and exploratory analysis processes can be found [here](https://rpubs.com/candaceng/exploratory-analysis). 
+Three text files containing collections of blogs, news, and tweets were read in and cleaned to create a corpus of text, which was used to construct N-gram models. The focus was on the frequency of words, unigrams, bigrams, and trigrams. A [word cloud](https://github.com/candaceng/data-science-capstone/blob/master/2.%20Web%20Application/R%20Presentation/wordcloud.png) and several [bar charts](https://github.com/candaceng/data-science-capstone/blob/master/2.%20Web%20Application/R%20Presentation/ngram-barcharts.png) were constructed in R for visual aid. A detailed walkthrough of the data cleaning and exploratory analysis processes can be found [here](https://rpubs.com/candaceng/exploratory-analysis). 
 
-<img src="./2.%20Web%20Application/R%Presentation/wordcloud.png" align="center">  
+<img src="./2.%20Web%20Application/R%20Presentation/wordcloud.png" align="center">  
 
-<img src="./2.%20Web%20Application/R%Presentation/ngram-barcharts.png" align="center"> 
+<img src="./2.%20Web%20Application/R%20Presentation/ngram-barcharts.png" align="center"> 
   
 
 
