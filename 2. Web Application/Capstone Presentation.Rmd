@@ -34,14 +34,14 @@ grid.raster(readPNG("wordcloud.png"))
 This [detailed article](https://rpubs.com/candaceng/exploratory-analysis) outlines the process of exploring the data after cleaning it. The focus was on analyzing the most frequently occurring unigrams, bigrams, and trigrams from the datasets. Various bar charts were constructed for better visualization of this process.
 
 ```{r echo=FALSE}
-library(png)
-library(grid)
 grid.raster(readPNG("ngram-barcharts.png"))
 ```
 
 ## Web Application
 
-```{r pressure}
-plot(pressure)
+The [web application](https://candaceng.shinyapps.io/Text_Prediction_Using_N-grams/) built in Shiny presents a predictive model that makes the best guess of what the next word of an incomplete sentence will be. Users can also toggle between bar charts of the most frequently occurring N-grams. We currently support unigrams, bigrams, and trigrams.
+
+```{r echo=FALSE}
+grid.raster(readPNG("web-app.png"))
 ```
 

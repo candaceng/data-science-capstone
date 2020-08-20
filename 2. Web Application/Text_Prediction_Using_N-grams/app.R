@@ -2,6 +2,9 @@ library(shiny)
 library(shinythemes)
 library(ggplot2)
 library(stringr)
+library(tm)
+library(NLP)
+library(RWeka)
 
 # Define UI for application 
 ui <- fluidPage(theme=shinythemes::shinytheme("lumen"),
