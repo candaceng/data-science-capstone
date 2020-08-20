@@ -1,6 +1,5 @@
 # Johns Hopkins Data Science Capstone  
 
---------------------------------------------------------------------------------  
 
 ### Background
 
@@ -31,4 +30,4 @@ This project analyzes a large corpus of text documents to discover the structure
 
 ### 2. Web Application
 
-The [web application](https://candaceng.shinyapps.io/Text_Prediction_Using_N-grams/) was built using Shiny. The user interface presents a predictive model that makes the best guess of what the next word of an incomplete sentence will be. Users can also toggle between bar charts of the most frequently occurring N-grams. We currently support unigrams, bigrams, and trigrams. 
+The [web application](https://candaceng.shinyapps.io/Text_Prediction_Using_N-grams/) was built using Shiny. The user interface presents a predictive model that makes the best guess of what the next word of an incomplete sentence will be. Users can also toggle between bar charts of the most frequently occurring N-grams in the text corpus. We currently support unigrams, bigrams, and trigrams.
